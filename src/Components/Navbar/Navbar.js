@@ -6,6 +6,8 @@ import {
   Button,
   IconButton,
 } from "@material-tailwind/react";
+import plxLogo from "../Assets/plxLogo.png";
+import { Link } from "react-router-dom";
 
 export default function Nav() {
   const [openNav, setOpenNav] = useState(false);
@@ -59,19 +61,18 @@ export default function Nav() {
   );
 
   return (
-    <Navbar className='mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4'>
+    <Navbar className='flex border-none  mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4'>
+      <img src={plxLogo} className='w-24' alt='' />
       <div className='container mx-auto flex items-center justify-between text-blue-gray-900'>
-        <Typography
-          as='a'
-          href='#'
-          variant='small'
-          className='mr-4 cursor-pointer py-1.5 font-normal text-black'>
-          <span>Material Tailwind</span>
-        </Typography>
         <div className='hidden lg:block'>{navList}</div>
-        <Button variant='gradient' size='sm' className='hidden lg:inline-block'>
-          <span>Buy Now</span>
-        </Button>
+        <Link to='/signin'>
+          <Button
+            variant='gradient'
+            size='sm'
+            className='hidden lg:inline-block'>
+            <span className='text-black'>SignIn</span>
+          </Button>
+        </Link>
         <IconButton
           variant='text'
           className='ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden'
@@ -109,8 +110,12 @@ export default function Nav() {
       </div>
       <MobileNav open={openNav}>
         {navList}
-        <Button variant='gradient' size='sm' fullWidth className='mb-2'>
-          <span>Buy Now</span>
+        <Button
+          variant='gradient'
+          size='sm'
+          fullWidth
+          className='mb-2 text-black'>
+          <span className='text-black'>Buy Now</span>
         </Button>
       </MobileNav>
     </Navbar>
