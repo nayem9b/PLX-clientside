@@ -1,5 +1,5 @@
 import { getAuth, updateProfile } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
 import bg from "../Assets/mesh-872.png";
@@ -7,13 +7,26 @@ const SignUp = () => {
   const { googleSignIn, userSignUp } = useContext(AuthContext);
   const navigate = useNavigate();
   const auth = getAuth();
+  const [role, setRole] = useState("Buyer");
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const userName = form.userName.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password, userName);
+    const userInfo = {
+      name: userName,
+      email: email,
+    };
+    fetch(`http://localhost:5000/userInfo`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
     userSignUp(email, password)
       .then((result) => {
         const user = result.user;
@@ -44,17 +57,50 @@ const SignUp = () => {
           </div>
           <div class='flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24'>
             <div class='w-full max-w-xl mx-auto lg:w-96'>
+              <Link
+                to='/'
+                class='text-3xl text-medium font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>
+                Pet Finder
+              </Link>
+              <h2 class='mt-6 text-3xl font-extrabold text-neutral-600'>
+                Sign in.
+              </h2>
+            </div>
+            <div className='grid grid-cols-2'>
               <div>
-                <Link
-                  to='/'
-                  class='text-3xl text-medium font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>
-                  Pet Finder
-                </Link>
-                <h2 class='mt-6 text-3xl font-extrabold text-neutral-600'>
-                  Sign in.
-                </h2>
-              </div>
+                <input
+                  type='radio'
+                  name='DeliveryOption'
+                  value='Seller'
+                  id='DeliveryStandard'
+                  class='peer hidden'
+                  onClick={(e) => setRole(e.target.value)}
+                />
 
+                <label
+                  for='DeliveryStandard'
+                  class='block cursor-pointer rounded-lg border border-gray-100 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500'>
+                  <p class='text-gray-700'>Seller</p>
+                </label>
+              </div>
+              <div>
+                <input
+                  type='radio'
+                  name='DeliveryOption'
+                  value='Buyer'
+                  id='DeliveryPriority'
+                  class='peer hidden'
+                  onClick={(e) => setRole(e.target.value)}
+                />
+
+                <label
+                  for='DeliveryPriority'
+                  class='block cursor-pointer rounded-lg border border-gray-100 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500'>
+                  <p class='text-gray-700'>Buyer</p>
+                </label>
+              </div>
+            </div>
+            <div>
               <div class='mt-8'>
                 <div class='mt-6'>
                   <form class='space-y-6' onSubmit={handleOnSubmit}>
