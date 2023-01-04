@@ -2,8 +2,8 @@ import { getAuth, updateProfile } from "firebase/auth";
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
-
-const SignIn = () => {
+import bg from "../Assets/mesh-872.png";
+const SignUp = () => {
   const { googleSignIn, userSignUp } = useContext(AuthContext);
   const navigate = useNavigate();
   const auth = getAuth();
@@ -38,7 +38,7 @@ const SignIn = () => {
           <div class='relative flex-1 hidden w-0 overflow-hidden lg:block'>
             <img
               class='absolute inset-0 object-cover w-full h-full '
-              src='https://images.pexels.com/photos/2882566/pexels-photo-2882566.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+              src={bg}
               alt=''
             />
           </div>
@@ -194,4 +194,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Navbar,
   MobileNav,
@@ -8,10 +8,15 @@ import {
 } from "@material-tailwind/react";
 import plxLogo from "../Assets/plxLogo.png";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Context/UserContext";
 
 export default function Nav() {
   const [openNav, setOpenNav] = useState(false);
-
+  const { user, logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout();
+    console.log("user logged out");
+  };
   useEffect(() => {
     window.addEventListener(
       "resize",
@@ -73,6 +78,21 @@ export default function Nav() {
             <span className='text-black'>SignIn</span>
           </Button>
         </Link>
+        <Link to='/signup'>
+          <Button
+            variant='gradient'
+            size='sm'
+            className='hidden lg:inline-block'>
+            <span className='text-black'>Sign Up</span>
+          </Button>
+        </Link>
+        <Button
+          onClick={handleLogout}
+          variant='gradient'
+          size='sm'
+          className='hidden lg:inline-block'>
+          <span className='text-black'>Log Out</span>
+        </Button>
         <IconButton
           variant='text'
           className='ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden'
