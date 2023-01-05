@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Card = ({ product }) => {
   const { item, image, price, number, description, _id } = product;
-  console.log(item);
+
   return (
     <div>
       <Link to={`/services/${_id}`}>

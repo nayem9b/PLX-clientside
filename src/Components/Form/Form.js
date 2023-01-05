@@ -32,6 +32,7 @@ const Form = () => {
             description: description,
             email: user.email,
             image: imgData.data.url,
+            name: user.displayName,
           };
           fetch(`http://localhost:5000/products`, {
             method: "POST",
