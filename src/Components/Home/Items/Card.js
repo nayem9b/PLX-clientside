@@ -1,15 +1,15 @@
 import React from "react";
 
 const Card = ({ product }) => {
-  const { item, price, number, description } = product;
+  const { item, image, price, number, description } = product;
   console.log(item);
   return (
     <div>
-      <div class='w-full max-w-sm bg-white rounded-lg shadow-md '>
+      <div class='w-[286px] h-[268px] max-w-sm bg-white rounded-lg shadow-md '>
         <a href='#'>
           <img
-            class='p-8 rounded-t-lg'
-            src='/docs/images/products/apple-watch.png'
+            class='h-[160px] w-[270px] rounded-t-lg'
+            src={image}
             alt='product image'
           />
         </a>

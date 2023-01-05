@@ -2,10 +2,6 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Context/UserContext";
 
 const Form = () => {
-  const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMG_BB_KEY}`;
-  console.log(url);
-  const key = process.env.REACT_APP_IMG_BB_KEY;
-  console.log(key);
   const { user } = useContext(AuthContext);
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -16,22 +12,38 @@ const Form = () => {
     const description = form.description.value;
     console.log(name, price, number, description);
 
-    const addedProduct = {
-      item: name,
-      price: price,
-      number: number,
-      description: description,
-      email: user.email,
-    };
-    fetch(`http://localhost:5000/products`, {
+    // Image upload section here
+    const image = form.image.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMG_BB_KEY}`;
+
+    fetch(url, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(addedProduct),
+      body: formData,
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((imgData) => {
+        if (imgData.success) {
+          const addedProduct = {
+            item: name,
+            price: price,
+            number: number,
+            description: description,
+            email: user.email,
+            image: imgData.data.url,
+          };
+          fetch(`http://localhost:5000/products`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(addedProduct),
+          })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+        }
+      });
   };
   return (
     <div>

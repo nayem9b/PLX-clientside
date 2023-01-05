@@ -10,9 +10,11 @@ const Home = () => {
   }, []);
   return (
     <div>
-      {products.map((product) => (
-        <Card product={product}></Card>
-      ))}
+      <div className='grid grid-cols-4 gap-4'>
+        {products.map((product) => (
+          <Card product={product}></Card>
+        ))}
+      </div>
     </div>
   );
 };
