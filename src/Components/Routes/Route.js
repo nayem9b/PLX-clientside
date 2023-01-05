@@ -3,6 +3,7 @@ import DashboardLayout from "../DashBoard/DashboardLayout";
 import Form from "../Form/Form";
 import Home from "../Home/Home";
 import SimplePage from "../Pages/SimplePage";
+import ProductDetailsPage from "../ProductDetailsPage/ProductDetailsPage";
 import Root from "../Root/Root";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/Signup";
@@ -21,6 +22,12 @@ export const router = createBrowserRouter([
       {
         path: "/signin",
         element: <SignIn></SignIn>,
+      },
+      {
+        path: "/services/:id",
+        element: <ProductDetailsPage></ProductDetailsPage>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/allproducts/${params.id}`),
       },
       {
         path: "/signup",
