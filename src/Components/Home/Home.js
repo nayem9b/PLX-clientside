@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Home = () => {
-  return (
-    <div>
-      <h1>This is home</h1>
-    </div>
-  );
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/products")
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+  return <div>{products.map((product) => console.log(product))}</div>;
 };
 
 export default Home;
