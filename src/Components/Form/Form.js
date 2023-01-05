@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { AuthContext } from "../Context/UserContext";
 
 const Form = () => {
+  const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMG_BB_KEY}`;
+  console.log(url);
+  const key = process.env.REACT_APP_IMG_BB_KEY;
+  console.log(key);
   const { user } = useContext(AuthContext);
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -11,6 +15,7 @@ const Form = () => {
     const number = form.number.value;
     const description = form.description.value;
     console.log(name, price, number, description);
+
     const addedProduct = {
       item: name,
       price: price,
@@ -65,10 +70,21 @@ const Form = () => {
                   name='number'
                 />
               </div>
-              <input
-                type='file'
-                className='file-input file-input-bordered file-input-info w-full mt-4 max-w-lg'
-              />
+
+              <div>
+                <label htmlFor='image' className='block mb-2 '>
+                  Select Image:
+                  <span className='text-red-600 text-lg'>*</span>
+                </label>
+                <input
+                  type='file'
+                  id='image'
+                  name='image'
+                  accept='image/*'
+                  required
+                  className='file-input file-input-bordered file-input-info w-full mt-4 max-w-lg'
+                />
+              </div>
               <div class='my-4'>
                 <textarea
                   required
