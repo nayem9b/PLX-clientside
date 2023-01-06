@@ -5,31 +5,27 @@ import { AuthContext } from "../Context/UserContext";
 const CheckoutForm = ({ checkout }) => {
   const { user } = useContext(AuthContext);
   const [cardError, setCardError] = useState("");
+  const [clientSecret, setClientSecret] = useState("");
   const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
-  const [clientSecret, setClientSecret] = useState("");
 
   const stripe = useStripe();
   const elements = useElements();
   const { price, _id } = checkout;
 
-  // useEffect(() => {
-  //   // Create PaymentIntent as soon as the page loads
-  //   fetch(
-  //     "https://doctors-portal-server-rust.vercel.app/create-payment-intent",
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         authorization: `bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //       body: JSON.stringify({ price }),
-  //     }
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => setClientSecret(data.clientSecret));
-  // }, [price]);
+  useEffect(() => {
+    // Create PaymentIntent as soon as the page loads
+    fetch("http://localhost:5000/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ price }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, [price]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -56,6 +52,7 @@ const CheckoutForm = ({ checkout }) => {
     }
     setSuccess("");
     setProcessing(true);
+
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -72,19 +69,17 @@ const CheckoutForm = ({ checkout }) => {
       return;
     }
     if (paymentIntent.status === "succeeded") {
-      console.log("card info", card);
+      console.log("card info", card, paymentIntent);
       // store payment info in the database
       const payment = {
-        price,
         transactionId: paymentIntent.id,
-        email: user.email,
-        bookingId: _id,
+        payer: user.email,
+        paymentId: _id,
       };
-      fetch("https://doctors-portal-server-rust.vercel.app/payments", {
-        method: "POST",
+      fetch(`http://localhost:5000/products/${_id}`, {
+        method: "PATCH",
         headers: {
           "content-type": "application/json",
-          authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(payment),
       })
@@ -119,7 +114,10 @@ const CheckoutForm = ({ checkout }) => {
             },
           }}
         />
-        <button className='btn btn-sm mt-4 btn-primary' type='submit'>
+        <button
+          className='btn btn-sm mt-4 btn-primary'
+          type='submit'
+          disabled={!stripe || !clientSecret || processing}>
           Pay
         </button>
       </form>
