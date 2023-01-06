@@ -34,6 +34,9 @@ const Form = () => {
             image: imgData.data.url,
             name: user.displayName,
             status: "unsold",
+            payer: "null",
+            paymentId: "null",
+            transactionId: "null",
           };
           fetch(`http://localhost:5000/products`, {
             method: "POST",

@@ -75,6 +75,7 @@ const CheckoutForm = ({ checkout }) => {
         transactionId: paymentIntent.id,
         payer: user.email,
         paymentId: _id,
+        status: "sold",
       };
       fetch(`http://localhost:5000/products/${_id}`, {
         method: "PATCH",

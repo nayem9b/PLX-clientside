@@ -214,7 +214,7 @@ const DashboardLayout = () => {
                     strokeLinejoin='round'
                   />
                 </svg>
-                <p className='text-base leading-4 '>Email</p>
+                <p className='text-base leading-4 '>My Products</p>
               </button>
               <button className='focus:outline-none flex justify-start items-center space-x-6 hover:text-white focus:bg-indigo-700 focus:text-white hover:bg-indigo-700 text-gray-600 rounded  py-3 pl-4  w-full '>
                 <svg

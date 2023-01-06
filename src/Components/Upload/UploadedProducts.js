@@ -9,26 +9,48 @@ const UploadedProducts = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/userproducts?email=${user.email}`)
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setProducts(data));
   }, [user.email]);
-  //   const {
-  //     data: products = [],
-  //     refetch,
-  //     isLoading,
-  //   } = useQuery({
-  //     queryKey: ["email"],
-  //     queryFn: async () => {
-  //       const res = await fetch(
-  //         `http://localhost:5000/userproducts?email=${user.email}`
-  //       );
-  //       const data = await res.json();
-  //       return data;
-  //     },
-  //   });
   console.log(products);
   return (
     <div>
-      <h1>hello</h1>
+      <div className='overflow-x-auto'>
+        <table className='table w-full'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Advertise</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((product, i) => (
+              <tr key={product._id}>
+                <th>{i + 1}</th>
+                <td>
+                  <img src={product.image} className='w-20 h-20' alt='' />
+                </td>
+                <td>{product.item}</td>
+                <td>
+                  {" "}
+                  {product.price} <span className='text-2xl'>৳</span>{" "}
+                </td>
+                <td>
+                  <button className='btn btn-xs btn-danger'>Advertise</button>
+                </td>
+                <td>
+                  <button className='btn btn-xs btn-danger'>
+                    Mark as sold
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
