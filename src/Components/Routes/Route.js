@@ -8,6 +8,7 @@ import ProductDetailsPage from "../ProductDetailsPage/ProductDetailsPage";
 import Root from "../Root/Root";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/Signup";
+import UnsoldProductsPage from "../UnsoldProductsPage/UnsoldProductsPage";
 import UploadedProducts from "../Upload/UploadedProducts";
 import PrivateRoute from "./PrivateRoute";
 
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
       {
         path: "/signin",
         element: <SignIn></SignIn>,
+      },
+      {
+        path: "/unsoldproducts",
+        element: <UnsoldProductsPage></UnsoldProductsPage>,
       },
       {
         path: "/product/:id",
