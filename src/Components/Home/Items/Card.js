@@ -6,7 +6,7 @@ const Card = ({ product }) => {
 
   return (
     <div>
-      <Link to={`/services/${_id}`}>
+      <Link to={`/product/${_id}`}>
         <div class='w-[286px] h-[268px] max-w-sm bg-white rounded-lg border-2 '>
           <img
             class='h-[160px] w-[270px] rounded-t-lg'

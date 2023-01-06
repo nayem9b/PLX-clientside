@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
         element: <SignIn></SignIn>,
       },
       {
-        path: "/services/:id",
+        path: "/product/:id",
         element: <ProductDetailsPage></ProductDetailsPage>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/allproducts/${params.id}`),
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
         path: "/checkout/:id",
         element: <Checkout></Checkout>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allproducts/${params.id}`),
+          fetch(`http://localhost:5000/checkout/${params.id}`),
       },
       {
         path: "/signup",

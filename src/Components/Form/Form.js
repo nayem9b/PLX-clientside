@@ -33,6 +33,7 @@ const Form = () => {
             email: user.email,
             image: imgData.data.url,
             name: user.displayName,
+            status: "unsold",
           };
           fetch(`http://localhost:5000/products`, {
             method: "POST",

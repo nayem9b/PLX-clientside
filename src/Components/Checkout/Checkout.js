@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useLoaderData } from "react-router-dom";
-
+import { AuthContext } from "../Context/UserContext";
+import CheckoutForm from "./CheckoutForm";
+const stripePromise = loadStripe(
+  "pk_test_51MN1JOFHMLfc17qouFrVkCsnlYTZ4pu0k5RtzDlljNUjaJh0VdNTR1NvsBHB1XapI3OkoJYyAnTl3an4R30Oe4xJ005UBV94Dc"
+);
 const Checkout = () => {
-  const { item, price, number, description, image, _id, name } =
-    useLoaderData();
+  const checkout = useLoaderData();
+  const { item, price, number, description, image, _id, name } = checkout;
+
   return (
     <div>
       <section>
@@ -32,7 +40,7 @@ const Checkout = () => {
                           <img
                             alt='Trainer'
                             src={image}
-                            class='h-16 w-16 flex-shrink-0 rounded-lg object-cover'
+                            class='h-60 w-60 flex-shrink-0 rounded-lg object-cover'
                           />
 
                           <div class='ml-4'>
@@ -41,18 +49,11 @@ const Checkout = () => {
                             <h1 class='inline ml-1'>{name}</h1>
                             <dl class='mt-1 space-y-1 text-xs text-gray-500'>
                               <div>
-                                <dt class='inline'>Videos</dt>
+                                <dt class='inline'>{number}</dt>
                                 {/* <dd class='inline ml-1'>{videos}</dd> */}
                               </div>
                             </dl>
                           </div>
-                        </div>
-
-                        <div>
-                          <p class='text-sm'>
-                            {price}
-                            <small class='text-gray-500'>x1</small>
-                          </p>
                         </div>
                       </li>
                     </ul>
@@ -61,125 +62,11 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div class='bg-white py-12 md:py-24'>
+            <div class='py-12 md:py-24'>
               <div class='mx-auto max-w-lg px-4 lg:px-8'>
-                <form class='grid grid-cols-6 gap-4'>
-                  <div class='col-span-6'>
-                    <label class='mb-1 block text-sm text-gray-600' for='phone'>
-                      Phone
-                    </label>
-
-                    <input
-                      class='w-full rounded-lg border-gray-200 p-2.5 text-sm shadow-sm'
-                      type='tel'
-                      id='phone'
-                      placeholder={number}
-                      disabled
-                    />
-                  </div>
-
-                  <fieldset class='col-span-6'>
-                    <legend class='mb-1 block text-sm text-gray-600'>
-                      Card Details
-                    </legend>
-
-                    <div class='-space-y-px rounded-lg bg-white shadow-sm'>
-                      <div>
-                        <label class='sr-only' for='card-number'>
-                          Card Number
-                        </label>
-
-                        <input
-                          class='relative w-full rounded-t-lg border-gray-200 p-2.5 text-sm placeholder-gray-400 focus:z-10'
-                          type='text'
-                          name='card-number'
-                          id='card-number'
-                          placeholder='Card number'
-                        />
-                      </div>
-
-                      <div class='flex -space-x-px'>
-                        <div class='flex-1'>
-                          <label class='sr-only' for='card-expiration-date'>
-                            Expiration Date
-                          </label>
-
-                          <input
-                            class='relative w-full rounded-bl-lg border-gray-200 p-2.5 text-sm placeholder-gray-400 focus:z-10'
-                            type='text'
-                            name='card-expiration-date'
-                            id='card-expiration-date'
-                            placeholder='MM / YY'
-                          />
-                        </div>
-
-                        <div class='flex-1'>
-                          <label class='sr-only' for='card-cvc'>
-                            CVC
-                          </label>
-
-                          <input
-                            class='relative w-full rounded-br-lg border-gray-200 p-2.5 text-sm placeholder-gray-400 focus:z-10'
-                            type='text'
-                            name='card-cvc'
-                            id='card-cvc'
-                            placeholder='CVC'
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </fieldset>
-
-                  <fieldset class='col-span-6'>
-                    <legend class='mb-1 block text-sm text-gray-600'>
-                      Billing Address
-                    </legend>
-
-                    <div class='-space-y-px rounded-lg bg-white shadow-sm'>
-                      <div>
-                        <label class='sr-only' for='country'>
-                          Country
-                        </label>
-
-                        <select
-                          class='relative w-full rounded-t-lg border-gray-200 p-2.5 text-sm focus:z-10'
-                          id='country'
-                          name='country'
-                          autocomplete='country-name'>
-                          <option>Bangladesh</option>
-                          <option>England</option>
-                          <option>Scotland</option>
-                          <option>France</option>
-                          <option>Belgium</option>
-                          <option>Japan</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label class='sr-only' for='postal-code'>
-                          ZIP/Post Code
-                        </label>
-
-                        <input
-                          class='relative w-full rounded-b-lg border-gray-200 p-2.5 text-sm placeholder-gray-400 focus:z-10'
-                          type='text'
-                          name='postal-code'
-                          id='postal-code'
-                          autocomplete='postal-code'
-                          placeholder='ZIP/Post Code'
-                        />
-                      </div>
-                    </div>
-                  </fieldset>
-
-                  <div class='col-span-6'>
-                    <button
-                      class='block w-full rounded-lg bg-black p-2.5 text-sm text-white'
-                      type='submit'>
-                      Pay Now
-                    </button>
-                  </div>
-                </form>
+                <Elements stripe={stripePromise}>
+                  <CheckoutForm checkout={checkout} />
+                </Elements>
               </div>
             </div>
           </div>
