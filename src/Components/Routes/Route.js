@@ -3,6 +3,7 @@ import Checkout from "../Checkout/Checkout";
 import DashboardLayout from "../DashBoard/DashboardLayout";
 import Form from "../Form/Form";
 import Home from "../Home/Home";
+import MyPurchases from "../MyPurchases/MyPurchases";
 import SimplePage from "../Pages/SimplePage";
 import ProductDetailsPage from "../ProductDetailsPage/ProductDetailsPage";
 import Root from "../Root/Root";
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myproducts",
         element: <UploadedProducts></UploadedProducts>,
+      },
+      {
+        path: "/dashboard/mypurchase",
+        element: <MyPurchases></MyPurchases>,
       },
     ],
   },

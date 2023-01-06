@@ -22,7 +22,7 @@ const UploadedProducts = () => {
               <th>Image</th>
               <th>Name</th>
               <th>Price</th>
-              <th>Advertise</th>
+
               <th>Status</th>
             </tr>
           </thead>
@@ -38,13 +38,21 @@ const UploadedProducts = () => {
                   {" "}
                   {product.price} <span className='text-2xl'>৳</span>{" "}
                 </td>
+
                 <td>
-                  <button className='btn btn-xs btn-danger'>Advertise</button>
-                </td>
-                <td>
-                  <button className='btn btn-xs btn-danger'>
-                    Mark as sold
-                  </button>
+                  {product.status === "sold" ? (
+                    <>
+                      <h1 className='bg-green-400 mx-auto py-2 px-5 rounded-lg'>
+                        Sold
+                      </h1>
+                    </>
+                  ) : (
+                    <>
+                      <h1 className='bg-yellow-400 mx-auto py-2 px-5 rounded-lg'>
+                        Unsold
+                      </h1>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}
