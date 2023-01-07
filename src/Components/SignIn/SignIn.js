@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
 
 const SignIn = () => {
-  const { googleSignIn, userSignUp } = useContext(AuthContext);
+  const { googleSignIn, userSignUp, resetPassword } = useContext(AuthContext);
   const navigate = useNavigate();
   const auth = getAuth();
   const handleOnSubmit = (event) => {
@@ -101,12 +101,13 @@ const SignIn = () => {
 
                     <div class='flex items-center justify-between'>
                       <div class='text-sm'>
-                        <a
+                        <h1
+                          onClick={resetPassword}
                           href='#'
                           class='font-medium text-blue-600 hover:text-blue-500'>
                           {" "}
                           Forgot your password?{" "}
-                        </a>
+                        </h1>
                       </div>
                     </div>
 

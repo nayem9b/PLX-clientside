@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
 import bg from "../Assets/mesh-872.png";
+import Typewriter from "typewriter-effect";
 const SignUp = () => {
   const { googleSignIn, userSignUp } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -49,11 +50,22 @@ const SignUp = () => {
       <section class=' overflow-hidden'>
         <div class='flex min- overflow-hidden'>
           <div class='relative flex-1 hidden w-0 overflow-hidden lg:block'>
-            <img
-              class='absolute inset-0 object-cover w-full h-full '
-              src={bg}
+            <div
+              class='absolute inset-0 object-cover w-full h-full bg-gradient-to-r from-violet-200 to-pink-300 '
               alt=''
             />
+            <h1 className='text-4xl absolute font-extrabold text-white mx-auto text-center ml-60 mt-60'>
+              Buy-Sell-Exchange
+            </h1>
+            <div className='absolute text-6xl text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600 mx-auto text-center ml-60 mt-72 font-extrabold '>
+              <Typewriter
+                options={{
+                  strings: ["Quick", "Convenient", "Affordable"],
+                  autoStart: true,
+                  loop: true,
+                }}
+              />
+            </div>
           </div>
           <div class='flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24'>
             <div class='w-full max-w-xl mx-auto lg:w-96'>
@@ -120,6 +132,7 @@ const SignUp = () => {
                           class='block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300'
                           data-dashlane-rid='639a2c6a013136c1'
                           data-kwimpalastatus='dead'
+                          required
                         />
                       </div>
                     </div>
@@ -136,7 +149,7 @@ const SignUp = () => {
                           name='email'
                           type='email'
                           autocomplete='email'
-                          required=''
+                          required
                           placeholder='Your Email'
                           class='block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300'
                           data-dashlane-rid='639a2c6a013136c1'
@@ -158,7 +171,7 @@ const SignUp = () => {
                           name='password'
                           type='password'
                           autocomplete='current-password'
-                          required=''
+                          required
                           placeholder='Your Password'
                           class='block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300'
                           data-dashlane-rid='d5e7311619cb637e'
