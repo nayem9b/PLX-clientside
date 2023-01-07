@@ -6,7 +6,7 @@ import { AuthContext } from "../Context/UserContext";
 import toast, { Toaster } from "react-hot-toast";
 const ProductDetailsPage = () => {
   const { user } = useContext(AuthContext);
-  const { item, price, number, description, image, _id, name } =
+  const { item, price, number, description, image, _id, name, status } =
     useLoaderData();
   console.log(item);
   const handleNameClick = () => {
@@ -53,10 +53,20 @@ const ProductDetailsPage = () => {
                 <div className='absolute inset-x-0 left-0 bottom-0'>
                   {user ? (
                     <>
-                      {" "}
-                      <Link to={`/checkout/${_id}`}>
-                        <ProceedToPayment></ProceedToPayment>
-                      </Link>
+                      {status === "sold" ? (
+                        <>
+                          <h1 className='text-2xl'>
+                            Oops you are late. It's already sold
+                          </h1>
+                        </>
+                      ) : (
+                        <>
+                          {" "}
+                          <Link to={`/checkout/${_id}`}>
+                            <ProceedToPayment></ProceedToPayment>
+                          </Link>
+                        </>
+                      )}
                     </>
                   ) : (
                     <>

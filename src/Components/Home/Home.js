@@ -13,6 +13,11 @@ const Home = () => {
   }, []);
   return (
     <div>
+      <img
+        src='https://images.pexels.com/photos/5662862/pexels-photo-5662862.png?auto=compress&cs=tinysrgb&w=600'
+        alt=''
+        className='w-full h-40 object-cover bg-repeat mb-10'
+      />
       <div className='grid grid-cols-4 mx-36 gap-y-4 '>
         {products.map((product) => (
           <Card product={product}></Card>

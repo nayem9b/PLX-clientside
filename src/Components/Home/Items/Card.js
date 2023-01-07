@@ -15,10 +15,10 @@ const Card = ({ product }) => {
           />
 
           <div class='px-5 pb-5'>
-            <h5 class='text-xl font-semibold tracking-tight text-gray-900 '>
+            <h1 className='text-xl font-bold'>₹ {price}</h1>
+            <h5 class='text-xl font-semibold tracking-tight text-gray-500 '>
               {item}
             </h5>
-            <h1>₹{price}</h1>
 
             <div class='flex items-center mt-2.5 mb-5'>
               <h1>{status}</h1>

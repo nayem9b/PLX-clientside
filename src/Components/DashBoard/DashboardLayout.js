@@ -19,15 +19,9 @@ const DashboardLayout = () => {
     <div>
       <Navbar></Navbar>
       <div className='flex'>
-        <div className='hidden lg:block'>
+        <div className='hidden md:hidden lg:block'>
           <div className='bg-gray-50'>
-            <div className='bg-white xl:hidden flex text-gray-800  hover:text-black focus:outline-none focus:text-black justify-between w-full p-6 items-center '>
-              <div
-                aria-label='toggler'
-                className='flex justify-center items-center'></div>
-            </div>
-
-            <div className='xl:mt-6 flex flex-col justify-start items-start  px-4 w-full space-y-3 pb-5 '>
+            <div className='  items-start  px-4 space-y-3 pb-5 '>
               <Link to='/dashboard'>
                 <button className='focus:outline-none flex jusitfy-start hover:text-white focus:bg-indigo-700 focus:text-white hover:bg-indigo-700 text-gray-600 rounded py-3 pl-4 pr-4 items-center space-x-6 w-full '>
                   <span className='text-2xl'>
@@ -54,14 +48,8 @@ const DashboardLayout = () => {
                 </button>
               </Link>
             </div>
-            <div className='w-full px-4'>
-              <hr className=' border-gray-100 w-full' />
-            </div>
-            <div className='mt-6 flex flex-col justify-start items-start  px-4 w-full space-y-3 pb-5 '></div>
+
             <div className='mt-36 flex  bg-indigo-700 justify-start space-x-2 items-center py-4 px-3.5    w-full  '>
-              {/* <div>
-                <img src={user.photoURL} alt='avatar' />
-              </div> */}
               <div className='avatar'>
                 <div className='w-14 rounded-full'>
                   <img src={user.photoURL} alt='' />

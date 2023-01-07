@@ -1,6 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/UserContext";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ checkout }) => {
   const { user } = useContext(AuthContext);
@@ -10,6 +12,7 @@ const CheckoutForm = ({ checkout }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
 
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   const { price, _id } = checkout;
@@ -87,10 +90,11 @@ const CheckoutForm = ({ checkout }) => {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          if (data.insertedId) {
-            setSuccess("Congrats! your payment completed");
-            setTransactionId(paymentIntent.id);
-          }
+
+          setSuccess("Congrats! your payment completed");
+          setTransactionId(paymentIntent.id);
+          toast.success("Congrats! your payment completed");
+          navigate("/dashboard/mypurchase");
         });
     }
     setProcessing(false);
