@@ -10,17 +10,14 @@ const SignIn = () => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const userName = form.userName.value;
+
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password, userName);
+    console.log(email, password);
     userSignUp(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        updateProfile(auth.currentUser, {
-          displayName: userName,
-        }).catch((error) => console.log(error));
+        console.log(user).catch((error) => console.log(error));
         navigate("/");
       })
       .catch((error) => console.log(error));
@@ -48,7 +45,7 @@ const SignIn = () => {
                 <Link
                   to='/'
                   class='text-3xl text-medium font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>
-                  Pet Finder
+                  P L X- Exchange platform like never before
                 </Link>
                 <h2 class='mt-6 text-3xl font-extrabold text-neutral-600'>
                   Sign in.
@@ -58,25 +55,6 @@ const SignIn = () => {
               <div class='mt-8'>
                 <div class='mt-6'>
                   <form class='space-y-6' onSubmit={handleOnSubmit}>
-                    <div>
-                      <label
-                        for='userName'
-                        class='block text-sm font-medium text-neutral-600'>
-                        {" "}
-                        User Name{" "}
-                      </label>
-                      <div class='mt-1'>
-                        <input
-                          id='userName'
-                          name='userName'
-                          type='text'
-                          placeholder='user name'
-                          class='block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300'
-                          data-dashlane-rid='639a2c6a013136c1'
-                          data-kwimpalastatus='dead'
-                        />
-                      </div>
-                    </div>
                     <div>
                       <label
                         for='email'
@@ -122,23 +100,6 @@ const SignIn = () => {
                     </div>
 
                     <div class='flex items-center justify-between'>
-                      <div class='flex items-center'>
-                        <input
-                          id='remember-me'
-                          name='remember-me'
-                          type='checkbox'
-                          placeholder='Your password'
-                          class='w-4 h-4 text-blue-600 border-gray-200 rounded focus:ring-blue-500'
-                          data-dashlane-rid='ad3065fc5b31c10a'
-                        />
-                        <label
-                          for='remember-me'
-                          class='block ml-2 text-sm text-neutral-600'>
-                          {" "}
-                          Remember me{" "}
-                        </label>
-                      </div>
-
                       <div class='text-sm'>
                         <a
                           href='#'
@@ -155,7 +116,7 @@ const SignIn = () => {
                         class='flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
                         data-dashlane-rid='94711dc67c50b5db'
                         data-kwimpalastatus='dead'>
-                        Sign up
+                        Sign in
                       </button>
                     </div>
                   </form>

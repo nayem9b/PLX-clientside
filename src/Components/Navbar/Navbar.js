@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
-
+import logo from "../Assets/Logo-removebg-preview.png";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,36 +14,30 @@ const Navbar = () => {
       <div class='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
         <div class='relative flex items-center justify-between'>
           <div class='flex items-center'>
-            <a
-              href='/'
+            <Link
+              to='/'
               aria-label='Company'
               title='Company'
               class='inline-flex items-center mr-8'>
-              <svg
-                class='w-8 text-deep-purple-accent-400'
-                viewBox='0 0 24 24'
-                strokeLinejoin='round'
-                strokeWidth='2'
-                strokeLinecap='round'
-                strokeMiterlimit='10'
-                stroke='currentColor'
-                fill='none'>
-                <rect x='3' y='1' width='7' height='12' />
-                <rect x='3' y='17' width='7' height='6' />
-                <rect x='14' y='1' width='7' height='6' />
-                <rect x='14' y='11' width='7' height='12' />
-              </svg>
-              <span class='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
-                Company
-              </span>
-            </a>
+              <img src={logo} className='w-12' alt='' />
+            </Link>
             <ul class='flex items-center hidden space-x-8 lg:flex'>
+              <li>
+                <Link
+                  to='/'
+                  aria-label='Our product'
+                  title='Our product'
+                  class='font-semibold tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500 '>
+                  Home
+                </Link>
+              </li>
+
               <li>
                 <Link
                   to='/dashboard'
                   aria-label='Our product'
                   title='Our product'
-                  class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                  class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500 '>
                   Dashboard
                 </Link>
               </li>
@@ -52,27 +46,44 @@ const Navbar = () => {
                   to='/unsoldproducts'
                   aria-label='Product pricing'
                   title='Product pricing'
-                  class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                  class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500 '>
                   Unsold Products
                 </Link>
               </li>
             </ul>
           </div>
+
           <ul class='flex items-center hidden space-x-8 lg:flex'>
             {user ? (
               <>
-                <div className='avatar'>
-                  <div className='w-10 rounded-full'>
-                    <img src={user.photoURL} alt='' />
-                  </div>
+                <div className='dropdown dropdown-end'>
+                  <label
+                    tabIndex={0}
+                    className='btn bg-white border-none hover:bg-green-400'>
+                    <div className='avatar'>
+                      <div className='w-10 rounded-full'>
+                        <img src={user.photoURL} alt='' />
+                      </div>
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'>
+                    <li>
+                      <a>Item 1</a>
+                    </li>
+                    <li>
+                      <a>Item 2</a>
+                    </li>
+                  </ul>
                 </div>
                 <li>
                   <button
                     onClick={handleLogout}
-                    aria-label='About us'
-                    title='About us'
-                    class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
-                    Log out
+                    class='relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500'>
+                    <span class='absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700'></span>
+                    <span class='absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease'></span>
+                    <span class='relative text-white'> Log out</span>
                   </button>
                 </li>
               </>
@@ -83,17 +94,17 @@ const Navbar = () => {
                     to='/signin'
                     aria-label='Sign in'
                     title='Sign in'
-                    class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                    class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500'>
                     Sign in
                   </Link>
                 </li>
                 <li>
                   <Link
                     to='/signup'
-                    class='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none'
-                    aria-label='Sign up'
-                    title='Sign up'>
-                    Sign up
+                    class='relative inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500'>
+                    <span class='absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700'></span>
+                    <span class='absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease'></span>
+                    <span class='relative text-white'>Sign up</span>
                   </Link>
                 </li>
               </>

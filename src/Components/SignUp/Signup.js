@@ -60,13 +60,13 @@ const SignUp = () => {
               <Link
                 to='/'
                 class='text-3xl text-medium font-extrabold  text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>
-                Pet Finder
+                Welcome abroad to PLX
               </Link>
               <h2 class='mt-6 text-3xl font-extrabold text-neutral-600'>
-                Sign in.
+                Sign Up
               </h2>
             </div>
-            <div className='grid grid-cols-2'>
+            <div className='grid grid-cols-2 mt-4'>
               <div>
                 <input
                   type='radio'
@@ -79,7 +79,7 @@ const SignUp = () => {
 
                 <label
                   for='DeliveryStandard'
-                  class='block cursor-pointer rounded-lg border border-gray-100 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500'>
+                  class='block cursor-pointer rounded-lg border border-gray-100 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500 hover:bg-fuchsia-100 transition-colors duration-200 '>
                   <p class='text-gray-700'>Seller</p>
                 </label>
               </div>
@@ -95,8 +95,8 @@ const SignUp = () => {
 
                 <label
                   for='DeliveryPriority'
-                  class='block cursor-pointer rounded-lg border border-gray-100 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500'>
-                  <p class='text-gray-700'>Buyer</p>
+                  class='block cursor-pointer rounded-lg border border-gray-100 p-4 text-sm font-medium shadow-sm hover:border-gray-200 peer-checked:border-blue-500 peer-checked:ring-1 peer-checked:ring-blue-500 hover:bg-fuchsia-100 transition-colors duration-200 '>
+                  <p class='text-gray-700 '>Buyer</p>
                 </label>
               </div>
             </div>
@@ -168,30 +168,12 @@ const SignUp = () => {
                     </div>
 
                     <div class='flex items-center justify-between'>
-                      <div class='flex items-center'>
-                        <input
-                          id='remember-me'
-                          name='remember-me'
-                          type='checkbox'
-                          placeholder='Your password'
-                          class='w-4 h-4 text-blue-600 border-gray-200 rounded focus:ring-blue-500'
-                          data-dashlane-rid='ad3065fc5b31c10a'
-                        />
-                        <label
-                          for='remember-me'
-                          class='block ml-2 text-sm text-neutral-600'>
-                          {" "}
-                          Remember me{" "}
-                        </label>
-                      </div>
-
                       <div class='text-sm'>
-                        <a
-                          href='#'
+                        <Link
+                          to='/signin'
                           class='font-medium text-blue-600 hover:text-blue-500'>
-                          {" "}
-                          Forgot your password?{" "}
-                        </a>
+                          Already have an account?
+                        </Link>
                       </div>
                     </div>
 
