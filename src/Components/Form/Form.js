@@ -28,7 +28,7 @@ const Form = () => {
     })
       .then((res) => res.json())
       .then((imgData) => {
-        if (imgData.success) {
+        if (imgData.success && description.length > 150) {
           const addedProduct = {
             item: name,
             price: price,
@@ -54,6 +54,10 @@ const Form = () => {
           form.reset();
           toast.success("Successfully toasted!");
           setIsLoading(false);
+        } else {
+          setIsLoading(false);
+
+          toast.error("Put the description 150 characters long");
         }
       });
   };
@@ -124,7 +128,7 @@ const Form = () => {
                   <div class='my-4'>
                     <textarea
                       required
-                      placeholder='Description*'
+                      placeholder='Description minimum 150 characters*'
                       name='description'
                       class='w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline'></textarea>
                   </div>

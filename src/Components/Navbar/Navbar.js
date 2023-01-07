@@ -10,8 +10,8 @@ const Navbar = () => {
     console.log("user logged out");
   };
   return (
-    <div>
-      <div class='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
+    <div className='sticky top-0 z-10 bg-gray-100'>
+      <div class='px-4 py-3 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
         <div class='relative flex items-center justify-between'>
           <div class='flex items-center'>
             <Link
@@ -61,7 +61,7 @@ const Navbar = () => {
                 <div className='dropdown dropdown-end'>
                   <label
                     tabIndex={0}
-                    className='btn bg-white border-none hover:bg-green-400'>
+                    className='btn bg-gray-100 border-none hover:bg-green-400'>
                     <div className='avatar'>
                       <div className='w-10 rounded-full'>
                         <img src={user.photoURL} alt='' />
