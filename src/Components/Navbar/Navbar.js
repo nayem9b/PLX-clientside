@@ -61,6 +61,11 @@ const Navbar = () => {
           <ul class='flex items-center hidden space-x-8 lg:flex'>
             {user ? (
               <>
+                <div className='avatar'>
+                  <div className='w-10 rounded-full'>
+                    <img src={user.photoURL} alt='' />
+                  </div>
+                </div>
                 <li>
                   <button
                     onClick={handleLogout}

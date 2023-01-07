@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../Context/UserContext";
+import Footer from "../Footer/Footer";
 
 import useBuyer from "../Hooks/useBuyer";
 import useSeller from "../Hooks/useSeller";
@@ -262,6 +263,7 @@ const DashboardLayout = () => {
         </div>
         <Outlet></Outlet>
       </div>
+      <Footer></Footer>
     </div>
   );
 };
