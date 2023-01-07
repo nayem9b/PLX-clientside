@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Checkout from "../Checkout/Checkout";
 import DashboardLayout from "../DashBoard/DashboardLayout";
+import ErrorPage from "../Error/ErrorPage";
 import Form from "../Form/Form";
 import Home from "../Home/Home";
 import MyPurchases from "../MyPurchases/MyPurchases";
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "*",
+        element: <ErrorPage></ErrorPage>,
       },
     ],
   },

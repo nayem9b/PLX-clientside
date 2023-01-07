@@ -12,11 +12,22 @@ const UnsoldProductsPage = () => {
   console.log(unsoldProducts);
   return (
     <div>
-      <div className='grid grid-cols-4 gap-4'>
-        {unsoldProducts.map((unsoldProduct) => (
-          <UnsoldProductCard unsoldProduct={unsoldProduct}></UnsoldProductCard>
-        ))}
-      </div>
+      {unsoldProducts.length !== 0 ? (
+        <>
+          <div className='grid grid-cols-4 gap-4'>
+            {unsoldProducts.map((unsoldProduct) => (
+              <UnsoldProductCard
+                unsoldProduct={unsoldProduct}></UnsoldProductCard>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <h1 class='font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600'>
+            OOps, inventory seems sold out now
+          </h1>
+        </>
+      )}
     </div>
   );
 };
