@@ -14,7 +14,7 @@ const UnsoldProductsPage = () => {
     <div>
       {unsoldProducts.length !== 0 ? (
         <>
-          <div className='grid grid-cols-4 gap-4'>
+          <div className='grid grid-cols-4 gap-4 mx-36 gap-y-4 '>
             {unsoldProducts.map((unsoldProduct) => (
               <UnsoldProductCard
                 unsoldProduct={unsoldProduct}></UnsoldProductCard>

@@ -51,13 +51,13 @@ const UploadedProducts = () => {
                     <td>
                       {product.status === "sold" ? (
                         <>
-                          <h1 className='bg-green-400 mx-auto py-2 px-5 rounded-lg'>
+                          <h1 className='bg-green-300 mx-auto py-2 px-5 rounded-lg'>
                             Sold
                           </h1>
                         </>
                       ) : (
                         <>
-                          <h1 className='bg-yellow-400 mx-auto py-2 px-5 rounded-lg'>
+                          <h1 className='bg-yellow-200 mx-auto py-2 px-5 rounded-lg'>
                             Unsold
                           </h1>
                         </>

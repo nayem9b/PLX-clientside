@@ -9,7 +9,7 @@ const Card = ({ product }) => {
       <Link to={`/product/${_id}`}>
         <div class='w-[286px] h-[268px] max-w-sm bg-white rounded-lg border-2 '>
           <img
-            class='h-[160px] w-[270px] rounded-t-lg'
+            class='h-[160px] w-[270px] rounded-t-lg pl-3 pt-2'
             src={image}
             alt='product image'
           />

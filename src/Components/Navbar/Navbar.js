@@ -61,7 +61,7 @@ const Navbar = () => {
                 <div className='dropdown dropdown-end'>
                   <label
                     tabIndex={0}
-                    className='btn bg-gray-100 border-none hover:bg-green-400'>
+                    className='btn bg-gray-100 border-none hover:bg-gray-100'>
                     <div className='avatar'>
                       <div className='w-10 rounded-full'>
                         <img src={user.photoURL} alt='' />

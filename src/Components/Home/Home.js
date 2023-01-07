@@ -13,7 +13,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <div className='grid grid-cols-4 gap-4'>
+      <div className='grid grid-cols-4 mx-36 gap-y-4 '>
         {products.map((product) => (
           <Card product={product}></Card>
         ))}
