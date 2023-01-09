@@ -17,7 +17,7 @@ const Navbar = () => {
             <Link
               to='/'
               aria-label='Company'
-              title='Company'
+              title='Plx'
               class='inline-flex items-center mr-8'>
               <img src={logo} className='w-12' alt='' />
             </Link>
@@ -37,7 +37,7 @@ const Navbar = () => {
                   <Link
                     to='/dashboard'
                     aria-label='Our product'
-                    title='Our product'
+                    title='Dashboard'
                     class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500 '>
                     Dashboard
                   </Link>
@@ -47,14 +47,20 @@ const Navbar = () => {
                 <Link
                   to='/unsoldproducts'
                   aria-label='Product pricing'
-                  title='Product pricing'
+                  title='Unsold Products'
                   class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500 '>
                   Unsold Products
                 </Link>
               </li>
             </ul>
           </div>
-
+          <div className='form-control'>
+            <input
+              type='text'
+              placeholder='Search'
+              className='input input-bordered'
+            />
+          </div>
           <ul class='flex items-center hidden space-x-8 lg:flex'>
             {user ? (
               <>
@@ -73,9 +79,6 @@ const Navbar = () => {
                     className='dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52'>
                     <li>
                       <h1>{user.displayName}</h1>
-                    </li>
-                    <li>
-                      <h1>Welcome Abroad</h1>
                     </li>
                     <li>
                       <button
@@ -147,29 +150,13 @@ const Navbar = () => {
                 <div class='p-5 bg-white border rounded shadow-sm'>
                   <div class='flex items-center justify-between mb-4'>
                     <div>
-                      <a
-                        href='/'
+                      <Link
+                        to='/'
                         aria-label='Company'
-                        title='Company'
-                        class='inline-flex items-center'>
-                        <svg
-                          class='w-8 text-deep-purple-accent-400'
-                          viewBox='0 0 24 24'
-                          strokeLinejoin='round'
-                          strokeWidth='2'
-                          strokeLinecap='round'
-                          strokeMiterlimit='10'
-                          stroke='currentColor'
-                          fill='none'>
-                          <rect x='3' y='1' width='7' height='12' />
-                          <rect x='3' y='17' width='7' height='6' />
-                          <rect x='14' y='1' width='7' height='6' />
-                          <rect x='14' y='11' width='7' height='12' />
-                        </svg>
-                        <span class='ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase'>
-                          Company
-                        </span>
-                      </a>
+                        title='Plx'
+                        class='inline-flex items-center mr-8'>
+                        <img src={logo} className='w-12' alt='' />
+                      </Link>
                     </div>
                     <div>
                       <button
@@ -189,59 +176,86 @@ const Navbar = () => {
                   <nav>
                     <ul class='space-y-4'>
                       <li>
-                        <a
-                          href='/'
-                          aria-label='Our product'
-                          title='Our product'
-                          class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
-                          Product
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href='/'
-                          aria-label='Our product'
-                          title='Our product'
-                          class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
-                          Features
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href='/'
-                          aria-label='Product pricing'
-                          title='Product pricing'
-                          class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
-                          Pricing
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href='/'
-                          aria-label='About us'
-                          title='About us'
-                          class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
-                          About us
-                        </a>
-                      </li>
-                      <li>
                         <Link
-                          to='/signin'
-                          aria-label='Sign in'
-                          title='Sign in'
+                          to='/'
+                          aria-label='Our product'
+                          title='Our product'
                           class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
-                          Sign in
+                          Home
                         </Link>
                       </li>
                       <li>
                         <Link
-                          to='/signup'
-                          class='inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none'
-                          aria-label='Sign up'
-                          title='Sign up'>
-                          Sign up
+                          to='/unsoldproducts'
+                          aria-label='Our product'
+                          title='Our product'
+                          class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                          Unsold Products
                         </Link>
                       </li>
+                      {user && (
+                        <>
+                          {" "}
+                          <li>
+                            <Link
+                              href='/dashboard'
+                              title='Add a product'
+                              class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                              Add a product
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to='/dashboard/myproducts'
+                              title='My Products'
+                              class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                              My Products
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href='/dashboard/mypurchase'
+                              title='My Purchase'
+                              class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                              My Purchase
+                            </Link>
+                          </li>
+                        </>
+                      )}
+                      {user ? (
+                        <>
+                          <li>
+                            <button
+                              onClick={handleLogout}
+                              class='relative w-full inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500'>
+                              <span class='absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700'></span>
+                              <span class='absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease'></span>
+                              <span class='relative text-white'> Log out</span>
+                            </button>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li>
+                            <Link
+                              to='/signin'
+                              aria-label='Sign in'
+                              title='Sign in'
+                              class='font-medium tracking-wide inline-flex items-center rounded-full p-4 px-5 py-3 shadow-xl justify-center  w-full bg-black text-white transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500'>
+                              Sign in
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              to='/signup'
+                              class='relative w-full inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500'>
+                              <span class='absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700'></span>
+                              <span class='absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease'></span>
+                              <span class='relative text-white'>Sign up</span>
+                            </Link>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>
