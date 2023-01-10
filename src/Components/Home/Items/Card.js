@@ -21,7 +21,20 @@ const Card = ({ product }) => {
             </h5>
 
             <div class='flex items-center mt-2.5 mb-5'>
-              <h1>{status}</h1>
+              {status === "sold" ? (
+                <>
+                  <h1 className='text-white bg-red-500 px-2 py-1 rounded-md'>
+                    Sold
+                  </h1>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <h1 className='text-white bg-green-400 px-2 py-1 rounded-md'>
+                    Unsold
+                  </h1>{" "}
+                </>
+              )}
             </div>
           </div>
         </div>

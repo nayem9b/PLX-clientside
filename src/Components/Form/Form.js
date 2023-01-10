@@ -20,7 +20,7 @@ const Form = () => {
     const image = form.image.files[0];
     const formData = new FormData();
     formData.append("image", image);
-    const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMG_BB_KEY}`;
+    const url = `https://api.imgbb.com/1/upload?key=4879859cdc7827193ef39d9fcfdd7c52`;
 
     fetch(url, {
       method: "POST",
@@ -28,7 +28,7 @@ const Form = () => {
     })
       .then((res) => res.json())
       .then((imgData) => {
-        if (imgData.success && description.length > 150) {
+        if (imgData.success) {
           const addedProduct = {
             item: name,
             price: price,
@@ -42,7 +42,7 @@ const Form = () => {
             paymentId: "null",
             transactionId: "null",
           };
-          fetch(`http://localhost:5000/products`, {
+          fetch(`https://plx-server-nayem9b.vercel.app/products`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -52,12 +52,8 @@ const Form = () => {
             .then((res) => res.json())
             .then((data) => console.log(data));
           form.reset();
-          toast.success("Successfully toasted!");
+          toast.success("Successfully posted your product for sell");
           setIsLoading(false);
-        } else {
-          setIsLoading(false);
-
-          toast.error("Put the description 150 characters long");
         }
       });
   };
@@ -105,7 +101,7 @@ const Form = () => {
                     <input
                       class='w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline'
                       type='number'
-                      placeholder='Phone*'
+                      placeholder='Phone Number*'
                       required
                       name='number'
                     />
@@ -128,15 +124,15 @@ const Form = () => {
                   <div class='my-4'>
                     <textarea
                       required
-                      placeholder='Description minimum 150 characters*'
+                      placeholder='Description minimum 50 characters*'
                       name='description'
                       class='w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline'></textarea>
                   </div>
                   <div class='my-2 w-1/2 lg:w-1/4'>
-                    <button
-                      class='uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full 
-                      focus:outline-none focus:shadow-outline'>
-                      Send Message
+                    <button class='relative w-full inline-flex items-center justify-center p-4 px-5 py-3 overflow-hidden font-medium text-indigo-600 transition duration-300 ease-out rounded-full shadow-xl group hover:ring-1 hover:ring-purple-500'>
+                      <span class='absolute inset-0 w-full h-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-700'></span>
+                      <span class='absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-pink-500 rounded-full opacity-30 group-hover:rotate-90 ease'></span>
+                      <span class='relative text-white'>Post your product</span>
                     </button>
                   </div>
                 </div>

@@ -32,6 +32,15 @@ const Navbar = () => {
                 </Link>
               </li>
 
+              <li>
+                <Link
+                  to='/unsoldproducts'
+                  aria-label='Product pricing'
+                  title='Unsold Products'
+                  class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500 '>
+                  Unsold Products
+                </Link>
+              </li>
               {user && (
                 <li>
                   <Link
@@ -44,23 +53,17 @@ const Navbar = () => {
                 </li>
               )}
               <li>
-                <Link
-                  to='/unsoldproducts'
-                  aria-label='Product pricing'
-                  title='Unsold Products'
-                  class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-fuchsia-500 '>
-                  Unsold Products
-                </Link>
+                <div className='form-control'>
+                  <input
+                    type='text'
+                    placeholder='Search'
+                    className='input input-bordered'
+                  />
+                </div>
               </li>
             </ul>
           </div>
-          <div className='form-control'>
-            <input
-              type='text'
-              placeholder='Search'
-              className='input input-bordered'
-            />
-          </div>
+
           <ul class='flex items-center hidden space-x-8 lg:flex'>
             {user ? (
               <>
@@ -179,7 +182,6 @@ const Navbar = () => {
                         <Link
                           to='/'
                           aria-label='Our product'
-                          title='Our product'
                           class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
                           Home
                         </Link>
@@ -188,7 +190,6 @@ const Navbar = () => {
                         <Link
                           to='/unsoldproducts'
                           aria-label='Our product'
-                          title='Our product'
                           class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
                           Unsold Products
                         </Link>
@@ -198,7 +199,7 @@ const Navbar = () => {
                           {" "}
                           <li>
                             <Link
-                              href='/dashboard'
+                              to='/dashboard'
                               title='Add a product'
                               class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
                               Add a product
@@ -214,7 +215,7 @@ const Navbar = () => {
                           </li>
                           <li>
                             <Link
-                              href='/dashboard/mypurchase'
+                              to='/dashboard/mypurchase'
                               title='My Purchase'
                               class='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
                               My Purchase

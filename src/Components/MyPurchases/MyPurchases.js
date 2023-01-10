@@ -5,7 +5,9 @@ const MyPurchases = () => {
   const [myPurchases, setMyPurchases] = useState([]);
   const { user } = useContext(AuthContext);
   useEffect(() => {
-    fetch(`http://localhost:5000/mypurchase?email=${user.email}`)
+    fetch(
+      `https://plx-server-nayem9b.vercel.app/mypurchase?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setMyPurchases(data));
   }, [user.email]);
@@ -31,7 +33,7 @@ const MyPurchases = () => {
                 <td>{myPurchase.item}</td>
                 <td>
                   {" "}
-                  {myPurchase.price} <span className='text-2xl'>৳</span>{" "}
+                  {myPurchase.price} <span className='text-2xl'>₹</span>{" "}
                 </td>
               </tr>
             ))}

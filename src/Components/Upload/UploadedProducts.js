@@ -7,7 +7,9 @@ const UploadedProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/userproducts?email=${user.email}`)
+    fetch(
+      `https://plx-server-nayem9b.vercel.app/userproducts?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, [user.email]);
@@ -44,7 +46,7 @@ const UploadedProducts = () => {
                     <td>{product.item}</td>
                     <td>
                       {" "}
-                      {product.price} <span className='text-2xl'>৳</span>{" "}
+                      {product.price} <span className='text-2xl'>₹</span>{" "}
                     </td>
 
                     <td>

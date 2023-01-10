@@ -35,13 +35,15 @@ export const router = createBrowserRouter([
         path: "/product/:id",
         element: <ProductDetailsPage></ProductDetailsPage>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/allproducts/${params.id}`),
+          fetch(
+            `https://plx-server-nayem9b.vercel.app/allproducts/${params.id}`
+          ),
       },
       {
         path: "/checkout/:id",
         element: <Checkout></Checkout>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/checkout/${params.id}`),
+          fetch(`https://plx-server-nayem9b.vercel.app/checkout/${params.id}`),
       },
       {
         path: "/signup",

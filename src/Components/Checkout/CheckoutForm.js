@@ -20,7 +20,7 @@ const CheckoutForm = ({ checkout }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://plx-server-nayem9b.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -81,7 +81,7 @@ const CheckoutForm = ({ checkout }) => {
         paymentId: _id,
         status: "sold",
       };
-      fetch(`http://localhost:5000/products/${_id}`, {
+      fetch(`https://plx-server-nayem9b.vercel.app/products/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
@@ -94,7 +94,7 @@ const CheckoutForm = ({ checkout }) => {
 
           setSuccess("Congrats! your payment completed");
           setTransactionId(paymentIntent.id);
-          toast.success("Congrats! your payment completed");
+          toast.success("Congratulations! your payment is completed");
           setConfirmButton(true);
         });
     }

@@ -19,7 +19,7 @@ const SignUp = () => {
       name: userName,
       email: email,
     };
-    fetch(`http://localhost:5000/userInfo`, {
+    fetch(`https://plx-server-nayem9b.vercel.app/userInfo`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
