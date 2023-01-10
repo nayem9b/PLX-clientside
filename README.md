@@ -1,4 +1,4 @@
-*Project Name: PLX Exchange (Clone of OLX, a B2B resale website)
+#Project Name: PLX Exchange (Clone of OLX, a B2B resale website)
 
 *Live link: https://plx-exchange.web.app 
 
